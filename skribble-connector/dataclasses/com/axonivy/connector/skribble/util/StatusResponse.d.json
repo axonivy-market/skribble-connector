@@ -1,0 +1,27 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/data-class/12.0.0/data-class.json",
+  "simpleName" : "StatusResponse",
+  "namespace" : "com.axonivy.connector.skribble.util",
+  "isBusinessCaseData" : false,
+  "fields" : [ {
+    "name" : "type",
+    "type" : "String",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "status",
+    "type" : "Integer",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "message",
+    "type" : "String",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "method",
+    "type" : "String",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "path",
+    "type" : "String",
+    "modifiers" : [ "PERSISTENT" ]
+  } ]
+}

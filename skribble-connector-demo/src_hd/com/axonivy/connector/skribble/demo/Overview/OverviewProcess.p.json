@@ -1,5 +1,5 @@
 {
-  "format" : "10.0.0",
+  "$schema" : "https://json-schema.axonivy.com/process/12.0.0/process.json",
   "id" : "1916EC2B0FB351D0",
   "kind" : "HTML_DIALOG",
   "config" : {
@@ -10,10 +10,10 @@
       "type" : "HtmlDialogStart",
       "name" : "start()",
       "config" : {
-        "callSignature" : "start",
+        "signature" : "start",
         "result" : {
           "params" : [
-            { "name" : "nextView", "type" : "String" }
+            { "name" : "nextView", "type" : "String", "desc" : "" }
           ],
           "map" : {
             "result.nextView" : "in.nextView"
@@ -24,7 +24,9 @@
       "visual" : {
         "at" : { "x" : 96, "y" : 64 }
       },
-      "connect" : { "id" : "f7", "to" : "f2" }
+      "connect" : [
+        { "id" : "f7", "to" : "f2" }
+      ]
     }, {
       "id" : "f1",
       "type" : "HtmlDialogEnd",
@@ -41,7 +43,9 @@
       "visual" : {
         "at" : { "x" : 96, "y" : 448 }
       },
-      "connect" : { "id" : "f5", "to" : "f4" }
+      "connect" : [
+        { "id" : "f5", "to" : "f4" }
+      ]
     }, {
       "id" : "f4",
       "type" : "HtmlDialogExit",
@@ -53,10 +57,10 @@
       "type" : "HtmlDialogMethodStart",
       "name" : "downloadDocument(SignatureRequest)",
       "config" : {
-        "callSignature" : "downloadDocument",
+        "signature" : "downloadDocument",
         "input" : {
           "params" : [
-            { "name" : "sr", "type" : "com.skribble.api.v2.client.SignatureRequest" }
+            { "name" : "sr", "type" : "com.skribble.api.v2.client.SignatureRequest", "desc" : "" }
           ],
           "map" : {
             "out.selectedSignatureRequest" : "param.sr"
@@ -67,7 +71,9 @@
       "visual" : {
         "at" : { "x" : 96, "y" : 352 }
       },
-      "connect" : { "id" : "f19", "to" : "f18" }
+      "connect" : [
+        { "id" : "f19", "to" : "f18" }
+      ]
     }, {
       "id" : "f9",
       "type" : "HtmlDialogEnd",
@@ -83,25 +89,24 @@
       ],
       "config" : {
         "processCall" : "API/Documents:getMetaData(String)",
+        "call" : {
+          "map" : {
+            "param.documentId" : "in.selectedSignatureRequest.documentId"
+          }
+        },
         "output" : {
           "map" : {
             "out" : "in",
             "out.document" : "result.document"
-          }
-        },
-        "call" : {
-          "params" : [
-            { "name" : "documentId", "type" : "String" }
-          ],
-          "map" : {
-            "param.documentId" : "in.selectedSignatureRequest.documentId"
           }
         }
       },
       "visual" : {
         "at" : { "x" : 232, "y" : 352 }
       },
-      "connect" : { "id" : "f21", "to" : "f20" }
+      "connect" : [
+        { "id" : "f21", "to" : "f20" }
+      ]
     }, {
       "id" : "f20",
       "type" : "SubProcessCall",
@@ -111,25 +116,24 @@
       ],
       "config" : {
         "processCall" : "API/Documents:getContentDataAsFile(String)",
+        "call" : {
+          "map" : {
+            "param.documentId" : "in.selectedSignatureRequest.documentId"
+          }
+        },
         "output" : {
           "map" : {
             "out" : "in",
             "out.file" : "result.file"
-          }
-        },
-        "call" : {
-          "params" : [
-            { "name" : "documentId", "type" : "String" }
-          ],
-          "map" : {
-            "param.documentId" : "in.selectedSignatureRequest.documentId"
           }
         }
       },
       "visual" : {
         "at" : { "x" : 416, "y" : 352 }
       },
-      "connect" : { "id" : "f10", "to" : "f9" }
+      "connect" : [
+        { "id" : "f10", "to" : "f9" }
+      ]
     }, {
       "id" : "f2",
       "type" : "SubProcessCall",
@@ -139,18 +143,15 @@
       ],
       "config" : {
         "processCall" : "API/SignatureRequest:getAll(com.axonivy.connector.skribble.signaturerequest.SignatureRequestSearchParameters)",
+        "call" : {
+          "map" : {
+            "param.signatureRequestSearchParameters.created_by" : "ivy.var.get(\"skribbleConnector.username\")"
+          }
+        },
         "output" : {
           "map" : {
             "out" : "in",
             "out.signatureRequests" : "result.signatureRequests"
-          }
-        },
-        "call" : {
-          "params" : [
-            { "name" : "signatureRequestSearchParameters", "type" : "com.axonivy.connector.skribble.signaturerequest.SignatureRequestSearchParameters" }
-          ],
-          "map" : {
-            "param.signatureRequestSearchParameters.created_by" : "ivy.var.get(\"skribbleConnector.username\")"
           }
         }
       },
@@ -158,16 +159,18 @@
         "at" : { "x" : 383, "y" : 63 },
         "size" : { "width" : 151, "height" : 55 }
       },
-      "connect" : { "id" : "f22", "to" : "f1" }
+      "connect" : [
+        { "id" : "f22", "to" : "f1" }
+      ]
     }, {
       "id" : "f23",
       "type" : "HtmlDialogMethodStart",
       "name" : "deleteSignerRequest(SignatureRequest)",
       "config" : {
-        "callSignature" : "deleteSignerRequest",
+        "signature" : "deleteSignerRequest",
         "input" : {
           "params" : [
-            { "name" : "sr", "type" : "com.skribble.api.v2.client.SignatureRequest" }
+            { "name" : "sr", "type" : "com.skribble.api.v2.client.SignatureRequest", "desc" : "" }
           ],
           "map" : {
             "out.selectedSignatureRequest" : "param.sr"
@@ -178,7 +181,9 @@
       "visual" : {
         "at" : { "x" : 96, "y" : 240 }
       },
-      "connect" : { "id" : "f27", "to" : "f26" }
+      "connect" : [
+        { "id" : "f27", "to" : "f26" }
+      ]
     }, {
       "id" : "f26",
       "type" : "SubProcessCall",
@@ -189,9 +194,6 @@
       "config" : {
         "processCall" : "API/SignatureRequest:delete(com.skribble.api.v2.client.SignatureRequest)",
         "call" : {
-          "params" : [
-            { "name" : "signatureRequest", "type" : "com.skribble.api.v2.client.SignatureRequest" }
-          ],
           "map" : {
             "param.signatureRequest" : "in.selectedSignatureRequest"
           }
@@ -215,9 +217,11 @@
       },
       "visual" : {
         "at" : { "x" : 256, "y" : 240 },
-        "size" : { "width" : 160, "height" : 60 }
+        "size" : { "width" : 160 }
       },
-      "connect" : { "id" : "f11", "to" : "f2", "via" : [ { "x" : 383, "y" : 240 } ] }
+      "connect" : [
+        { "id" : "f11", "to" : "f2", "via" : [ { "x" : 383, "y" : 240 } ] }
+      ]
     }, {
       "id" : "f6",
       "type" : "HtmlDialogEventStart",
@@ -228,6 +232,8 @@
       "visual" : {
         "at" : { "x" : 96, "y" : 160 }
       },
-      "connect" : { "id" : "f15", "to" : "f2", "via" : [ { "x" : 383, "y" : 160 } ] }
+      "connect" : [
+        { "id" : "f15", "to" : "f2", "via" : [ { "x" : 383, "y" : 160 } ] }
+      ]
     } ]
 }

@@ -1,5 +1,5 @@
 {
-  "format" : "10.0.0",
+  "$schema" : "https://json-schema.axonivy.com/process/12.0.0/process.json",
   "id" : "19150ED527CCE86A",
   "kind" : "CALLABLE_SUB",
   "config" : {
@@ -10,13 +10,13 @@
       "type" : "CallSubStart",
       "name" : "createSimple(String,String,File,List<CreateSignature>)",
       "config" : {
-        "callSignature" : "createSimple",
+        "signature" : "createSimple",
         "input" : {
           "params" : [
-            { "name" : "title", "type" : "String" },
-            { "name" : "message", "type" : "String" },
-            { "name" : "file", "type" : "java.io.File" },
-            { "name" : "signatures", "type" : "List<com.skribble.api.v2.client.CreateSignature>" }
+            { "name" : "title", "type" : "String", "desc" : "" },
+            { "name" : "message", "type" : "String", "desc" : "" },
+            { "name" : "file", "type" : "java.io.File", "desc" : "" },
+            { "name" : "signatures", "type" : "List<com.skribble.api.v2.client.CreateSignature>", "desc" : "" }
           ],
           "map" : {
             "out.createSignatureRequest.message" : "param.message",
@@ -30,61 +30,74 @@
             "FileInputStream fis = new FileInputStream(param.file);",
             "out.createSignatureRequest.content = Base64.getEncoder().encodeToString(fis.readAllBytes());"
           ]
-        },
-        "tags" : "connector"
+        }
       },
+      "tags" : [
+        "connector"
+      ],
       "visual" : {
         "at" : { "x" : 96, "y" : 64 }
       },
-      "connect" : { "id" : "f7", "to" : "f3" }
+      "connect" : [
+        { "id" : "f7", "to" : "f3" }
+      ]
     }, {
       "id" : "f3",
       "type" : "RestClientCall",
       "name" : "create signature-requests",
       "config" : {
-        "bodyObjectMapping" : {
-          "param" : "in.createSignatureRequest"
-        },
-        "clientId" : "6c92d3d7-cb33-4cfa-964a-8242ad165742",
         "method" : "POST",
-        "queryParams" : {
-          "account_email" : "",
-          "created_by" : "",
-          "page_number" : "",
-          "page_size" : "",
-          "search" : "",
-          "signature_status" : "",
-          "signatures_count" : "",
-          "signer_email_address" : "",
-          "status_overall" : ""
+        "target" : {
+          "clientId" : "6c92d3d7-cb33-4cfa-964a-8242ad165742",
+          "path" : "v2/signature-requests",
+          "templateParams" : {
+            "version" : "\"\""
+          },
+          "queryParams" : {
+            "account_email" : "",
+            "created_by" : "",
+            "page_number" : "",
+            "page_size" : "",
+            "search" : "",
+            "signature_status" : "",
+            "signatures_count" : "",
+            "signer_email_address" : "",
+            "status_overall" : ""
+          }
         },
-        "statusErrorCode" : "ivy:error:rest:client",
-        "bodyObjectType" : "com.skribble.api.v2.client.CreateSignatureRequest",
-        "bodyInputType" : "ENTITY",
-        "responseCode" : "out.signatureRequest = result;",
-        "bodyForm" : {
-          "" : ""
+        "body" : {
+          "form" : {
+            "" : [ "" ]
+          },
+          "entity" : {
+            "type" : "com.skribble.api.v2.client.CreateSignatureRequest",
+            "map" : {
+              "param" : "in.createSignatureRequest"
+            }
+          }
         },
-        "path" : "v2/signature-requests",
-        "clientErrorCode" : "ivy:error:rest:client",
-        "templateParams" : {
-          "version" : "\"\""
-        },
-        "resultType" : "com.skribble.api.v2.client.SignatureRequest"
+        "response" : {
+          "entity" : {
+            "type" : "com.skribble.api.v2.client.SignatureRequest",
+            "code" : "out.signatureRequest = result;"
+          }
+        }
       },
       "visual" : {
         "at" : { "x" : 360, "y" : 64 }
       },
-      "connect" : { "id" : "f13", "to" : "f16" }
+      "connect" : [
+        { "id" : "f13", "to" : "f16" }
+      ]
     }, {
       "id" : "f5",
       "type" : "CallSubStart",
       "name" : "create(CreateSignatureRequest)",
       "config" : {
-        "callSignature" : "create",
+        "signature" : "create",
         "input" : {
           "params" : [
-            { "name" : "createSignatureRequest", "type" : "com.skribble.api.v2.client.CreateSignatureRequest" }
+            { "name" : "createSignatureRequest", "type" : "com.skribble.api.v2.client.CreateSignatureRequest", "desc" : "" }
           ],
           "map" : {
             "out.createSignatureRequest" : "param.createSignatureRequest"
@@ -92,55 +105,67 @@
         },
         "result" : {
           "params" : [
-            { "name" : "signatureRequest", "type" : "com.skribble.api.v2.client.SignatureRequest" }
+            { "name" : "signatureRequest", "type" : "com.skribble.api.v2.client.SignatureRequest", "desc" : "" }
           ],
           "map" : {
             "result.signatureRequest" : "in.signatureRequest"
           }
-        },
-        "tags" : "connector"
+        }
       },
+      "tags" : [
+        "connector"
+      ],
       "visual" : {
         "at" : { "x" : 96, "y" : 168 }
       },
-      "connect" : { "id" : "f22", "to" : "f3", "via" : [ { "x" : 360, "y" : 168 } ] }
+      "connect" : [
+        { "id" : "f22", "to" : "f3", "via" : [ { "x" : 360, "y" : 168 } ] }
+      ]
     }, {
       "id" : "f12",
       "type" : "RestClientCall",
       "name" : "get signature-requests",
       "config" : {
-        "bodyForm" : {
-          "" : ""
+        "target" : {
+          "clientId" : "6c92d3d7-cb33-4cfa-964a-8242ad165742",
+          "path" : "v2/signature-requests/{id}",
+          "templateParams" : {
+            "id" : "in.signatureRequest.id",
+            "version" : "\"v2\""
+          }
         },
-        "path" : "v2/signature-requests/{id}",
-        "bodyObjectMapping" : {
-          "param" : "in.createSignatureRequest"
+        "body" : {
+          "form" : {
+            "" : [ "" ]
+          },
+          "entity" : {
+            "map" : {
+              "param" : "in.createSignatureRequest"
+            }
+          }
         },
-        "clientId" : "6c92d3d7-cb33-4cfa-964a-8242ad165742",
-        "clientErrorCode" : "ivy:error:rest:client",
-        "method" : "GET",
-        "statusErrorCode" : "ivy:error:rest:client",
-        "templateParams" : {
-          "id" : "in.signatureRequest.id",
-          "version" : "\"v2\""
-        },
-        "resultType" : "com.skribble.api.v2.client.SignatureRequest",
-        "bodyInputType" : "ENTITY",
-        "responseCode" : "out.signatureRequest = result;"
+        "response" : {
+          "entity" : {
+            "type" : "com.skribble.api.v2.client.SignatureRequest",
+            "code" : "out.signatureRequest = result;"
+          }
+        }
       },
       "visual" : {
         "at" : { "x" : 360, "y" : 272 }
       },
-      "connect" : { "id" : "f18", "to" : "f8" }
+      "connect" : [
+        { "id" : "f18", "to" : "f8" }
+      ]
     }, {
       "id" : "f10",
       "type" : "CallSubStart",
       "name" : "get(SignatureRequest)",
       "config" : {
-        "callSignature" : "get",
+        "signature" : "get",
         "input" : {
           "params" : [
-            { "name" : "signatureRequest", "type" : "com.skribble.api.v2.client.SignatureRequest" }
+            { "name" : "signatureRequest", "type" : "com.skribble.api.v2.client.SignatureRequest", "desc" : "" }
           ],
           "map" : {
             "out.signatureRequest" : "param.signatureRequest"
@@ -148,18 +173,22 @@
         },
         "result" : {
           "params" : [
-            { "name" : "signatureRequest", "type" : "com.skribble.api.v2.client.SignatureRequest" }
+            { "name" : "signatureRequest", "type" : "com.skribble.api.v2.client.SignatureRequest", "desc" : "" }
           ],
           "map" : {
             "result.signatureRequest" : "in.signatureRequest"
           }
-        },
-        "tags" : "connector"
+        }
       },
+      "tags" : [
+        "connector"
+      ],
       "visual" : {
         "at" : { "x" : 96, "y" : 272 }
       },
-      "connect" : { "id" : "f15", "to" : "f12" }
+      "connect" : [
+        { "id" : "f15", "to" : "f12" }
+      ]
     }, {
       "id" : "f16",
       "type" : "CallSubEnd",
@@ -177,51 +206,59 @@
       "type" : "RestClientCall",
       "name" : "get All signature-requests",
       "config" : {
-        "bodyObjectMapping" : {
-          "param" : "in.createSignatureRequest"
+        "target" : {
+          "clientId" : "6c92d3d7-cb33-4cfa-964a-8242ad165742",
+          "path" : "v2/signature-requests",
+          "templateParams" : {
+            "version" : "in.searchParameters.version"
+          },
+          "queryParams" : {
+            "account_email" : "in.searchParameters.account_email",
+            "created_by" : "in.searchParameters.created_by",
+            "page_number" : "",
+            "page_size" : "",
+            "search" : "in.searchParameters.search",
+            "signature_status" : "in.searchParameters.signature_status",
+            "signatures_count" : "",
+            "signer_email_address" : "in.searchParameters.signer_email_address",
+            "status_overall" : "in.searchParameters.status_overall"
+          }
         },
-        "clientId" : "6c92d3d7-cb33-4cfa-964a-8242ad165742",
-        "method" : "GET",
-        "queryParams" : {
-          "account_email" : "in.searchParameters.account_email",
-          "created_by" : "in.searchParameters.created_by",
-          "page_number" : "",
-          "page_size" : "",
-          "search" : "in.searchParameters.search",
-          "signature_status" : "in.searchParameters.signature_status",
-          "signatures_count" : "",
-          "signer_email_address" : "in.searchParameters.signer_email_address",
-          "status_overall" : "in.searchParameters.status_overall"
+        "body" : {
+          "form" : {
+            "" : [ "" ]
+          },
+          "entity" : {
+            "map" : {
+              "param" : "in.createSignatureRequest"
+            }
+          }
         },
-        "statusErrorCode" : "ivy:error:rest:client",
-        "bodyInputType" : "ENTITY",
-        "responseCode" : "//out.signatureRequest = Result;",
-        "bodyForm" : {
-          "" : ""
-        },
-        "path" : "v2/signature-requests",
-        "clientErrorCode" : "ivy:error:rest:client",
-        "responseMapping" : {
-          "out.signatureRequests" : "result"
-        },
-        "templateParams" : {
-          "version" : "in.searchParameters.version"
-        },
-        "resultType" : "List<com.skribble.api.v2.client.SignatureRequest>"
+        "response" : {
+          "entity" : {
+            "type" : "List<com.skribble.api.v2.client.SignatureRequest>",
+            "map" : {
+              "out.signatureRequests" : "result"
+            },
+            "code" : "//out.signatureRequest = Result;"
+          }
+        }
       },
       "visual" : {
         "at" : { "x" : 360, "y" : 384 }
       },
-      "connect" : { "id" : "f23", "to" : "f21" }
+      "connect" : [
+        { "id" : "f23", "to" : "f21" }
+      ]
     }, {
       "id" : "f20",
       "type" : "CallSubStart",
       "name" : "getAll(SignatureRequestSearchParameters)",
       "config" : {
-        "callSignature" : "getAll",
+        "signature" : "getAll",
         "input" : {
           "params" : [
-            { "name" : "signatureRequestSearchParameters", "type" : "com.axonivy.connector.skribble.signaturerequest.SignatureRequestSearchParameters" }
+            { "name" : "signatureRequestSearchParameters", "type" : "com.axonivy.connector.skribble.signaturerequest.SignatureRequestSearchParameters", "desc" : "" }
           ],
           "map" : {
             "out.searchParameters" : "param.signatureRequestSearchParameters"
@@ -229,18 +266,22 @@
         },
         "result" : {
           "params" : [
-            { "name" : "signatureRequests", "type" : "List<com.skribble.api.v2.client.SignatureRequest>" }
+            { "name" : "signatureRequests", "type" : "List<com.skribble.api.v2.client.SignatureRequest>", "desc" : "" }
           ],
           "map" : {
             "result.signatureRequests" : "in.signatureRequests"
           }
-        },
-        "tags" : "connector"
+        }
       },
+      "tags" : [
+        "connector"
+      ],
       "visual" : {
         "at" : { "x" : 96, "y" : 384 }
       },
-      "connect" : { "id" : "f24", "to" : "f19" }
+      "connect" : [
+        { "id" : "f24", "to" : "f19" }
+      ]
     }, {
       "id" : "f21",
       "type" : "CallSubEnd",
@@ -252,58 +293,68 @@
       "type" : "RestClientCall",
       "name" : "del signature-request",
       "config" : {
-        "bodyObjectMapping" : {
-          "param" : "in.createSignatureRequest"
-        },
-        "clientId" : "6c92d3d7-cb33-4cfa-964a-8242ad165742",
         "method" : "DELETE",
-        "queryParams" : {
-          "account_email" : ""
+        "target" : {
+          "clientId" : "6c92d3d7-cb33-4cfa-964a-8242ad165742",
+          "path" : "v2/signature-requests/{id}",
+          "templateParams" : {
+            "id" : "in.signatureRequest.id",
+            "version" : ""
+          },
+          "queryParams" : {
+            "account_email" : ""
+          }
         },
-        "statusErrorCode" : ">> Ignore status",
-        "bodyInputType" : "ENTITY",
-        "responseCode" : [
-          "try{",
-          "  if(response.getStatus() == 200){",
-          "    out.statusResponse.status = response.getStatus();",
-          "    out.statusResponse.message = response.getStatusInfo().toString();",
-          "    ",
-          "  }else{",
-          "    out.statusResponse.type = result.get(\"type\").asText();",
-          "    out.statusResponse.status = result.get(\"status\").asInt();",
-          "    out.statusResponse.message = result.get(\"message\").asText();",
-          "    out.statusResponse.method = result.get(\"method\").asText();",
-          "    out.statusResponse.path = result.get(\"path\").asText();  ",
-          "  }",
-          "",
-          "}catch{",
-          "",
-          "}  "
-        ],
-        "bodyForm" : {
-          "" : ""
+        "body" : {
+          "form" : {
+            "" : [ "" ]
+          },
+          "entity" : {
+            "map" : {
+              "param" : "in.createSignatureRequest"
+            }
+          }
         },
-        "path" : "v2/signature-requests/{id}",
-        "clientErrorCode" : "ivy:error:rest:client",
-        "templateParams" : {
-          "id" : "in.signatureRequest.id",
-          "version" : ""
-        },
-        "resultType" : "com.fasterxml.jackson.databind.JsonNode"
+        "response" : {
+          "entity" : {
+            "type" : "com.fasterxml.jackson.databind.JsonNode",
+            "code" : [
+              "try{",
+              "  if(response.getStatus() == 200){",
+              "    out.statusResponse.status = response.getStatus();",
+              "    out.statusResponse.message = response.getStatusInfo().toString();",
+              "    ",
+              "  }else{",
+              "    out.statusResponse.type = result.get(\"type\").asText();",
+              "    out.statusResponse.status = result.get(\"status\").asInt();",
+              "    out.statusResponse.message = result.get(\"message\").asText();",
+              "    out.statusResponse.method = result.get(\"method\").asText();",
+              "    out.statusResponse.path = result.get(\"path\").asText();  ",
+              "  }",
+              "",
+              "}catch{",
+              "",
+              "}  "
+            ]
+          },
+          "statusError" : ">> Ignore status"
+        }
       },
       "visual" : {
         "at" : { "x" : 360, "y" : 504 }
       },
-      "connect" : { "id" : "f29", "to" : "f27" }
+      "connect" : [
+        { "id" : "f29", "to" : "f27" }
+      ]
     }, {
       "id" : "f26",
       "type" : "CallSubStart",
       "name" : "delete(SignatureRequest)",
       "config" : {
-        "callSignature" : "delete",
+        "signature" : "delete",
         "input" : {
           "params" : [
-            { "name" : "signatureRequest", "type" : "com.skribble.api.v2.client.SignatureRequest" }
+            { "name" : "signatureRequest", "type" : "com.skribble.api.v2.client.SignatureRequest", "desc" : "" }
           ],
           "map" : {
             "out.signatureRequest" : "param.signatureRequest"
@@ -311,18 +362,22 @@
         },
         "result" : {
           "params" : [
-            { "name" : "statusResponse", "type" : "com.axonivy.connector.skribble.util.StatusResponse" }
+            { "name" : "statusResponse", "type" : "com.axonivy.connector.skribble.util.StatusResponse", "desc" : "" }
           ],
           "map" : {
             "result.statusResponse" : "in.statusResponse"
           }
-        },
-        "tags" : "connector"
+        }
       },
+      "tags" : [
+        "connector"
+      ],
       "visual" : {
         "at" : { "x" : 96, "y" : 504 }
       },
-      "connect" : { "id" : "f30", "to" : "f17" }
+      "connect" : [
+        { "id" : "f30", "to" : "f17" }
+      ]
     }, {
       "id" : "f27",
       "type" : "CallSubEnd",

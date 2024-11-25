@@ -1,0 +1,57 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/data-class/12.0.0/data-class.json",
+  "simpleName" : "SignatureRequestSearchParameters",
+  "namespace" : "com.axonivy.connector.skribble.signaturerequest",
+  "isBusinessCaseData" : false,
+  "fields" : [ {
+    "name" : "id",
+    "type" : "String",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "version",
+    "type" : "String",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "account_email",
+    "type" : "String",
+    "comment" : "Filter on the field signatures.account_email",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "created_by",
+    "type" : "String",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "page_number",
+    "type" : "Integer",
+    "comment" : "Page number must be greater than or equal to 0",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "page_size",
+    "type" : "Integer",
+    "comment" : "Page size must be greater than or equal to 0",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "search",
+    "type" : "String",
+    "comment" : "Filter on the field title to search for documents containing the search term.",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "signature_status",
+    "type" : "String",
+    "comment" : "Filter on the field signatures.status_code with one of the valid Signature states",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "signatures_count",
+    "type" : "Integer",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "signer_email_address",
+    "type" : "String",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "status_overall",
+    "type" : "String",
+    "comment" : "Filter on the field status_overall with one of the valid Signature states",
+    "modifiers" : [ "PERSISTENT" ]
+  } ]
+}
