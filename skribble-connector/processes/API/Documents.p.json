@@ -277,7 +277,7 @@
             "import java.util.Base64;",
             "",
             "try{",
-            "  out.file = new File(\"Skribble/\"+in.document.id+\".pdf\", true);",
+            "  out.file = new File(in.document.id+\".pdf\", true);",
             "  ",
             "  Binary base64 = Base64.getDecoder().decode(in.content);",
             "  out.file.writeBinary(base64);",
