@@ -127,7 +127,7 @@
             "try{",
             "  String filename = UUID.randomUUID().toString().substring(0, 10);",
             "",
-            "  File f = new File(filename+\".pdf\", true);",
+            "  File f = new File(filename + \".pdf\", true);",
             "  ",
             "  f.writeBinary(in.fileUploadEvent.getFile().getContent());",
             "  out.file = f;",
