@@ -1,0 +1,19 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/data-class/12.0.0/data-class.json",
+  "simpleName" : "DocumentsData",
+  "namespace" : "com.axonivy.connector.skribble.documents",
+  "isBusinessCaseData" : false,
+  "fields" : [ {
+    "name" : "document",
+    "type" : "com.skribble.api.v2.client.Document",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "content",
+    "type" : "String",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "file",
+    "type" : "File",
+    "modifiers" : [ "PERSISTENT" ]
+  } ]
+}

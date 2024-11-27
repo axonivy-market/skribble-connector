@@ -1,5 +1,5 @@
 {
-  "format" : "10.0.0",
+  "$schema" : "https://json-schema.axonivy.com/process/12.0.0/process.json",
   "id" : "191739E06E060E63",
   "config" : {
     "data" : "com.axonivy.connector.skribble.demo.SampleProcessData"
@@ -9,38 +9,46 @@
       "type" : "RequestStart",
       "name" : "signNewDocument.ivp",
       "config" : {
-        "callSignature" : "signNewDocument",
-        "outLink" : "signNewDocument.ivp",
-        "startDescription" : "Upload your document for signing and define the requirement signers",
-        "startName" : "Upload document for signing",
-        "tags" : "demo",
-        "case" : { }
+        "signature" : "signNewDocument",
+        "request" : {
+          "name" : "Upload document for signing",
+          "description" : "Upload your document for signing and define the requirement signers"
+        }
       },
+      "tags" : [
+        "demo"
+      ],
       "visual" : {
         "at" : { "x" : 88, "y" : 144 }
       },
-      "connect" : { "id" : "f14", "to" : "f9" }
+      "connect" : [
+        { "id" : "f14", "to" : "f9" }
+      ]
     }, {
       "id" : "f4",
       "type" : "RequestStart",
       "name" : "showOverview.ivp",
       "config" : {
-        "callSignature" : "showOverview",
+        "signature" : "showOverview",
         "input" : {
           "map" : {
             "out.nextView" : "\"overview\""
           }
         },
-        "outLink" : "showOverview.ivp",
-        "startDescription" : "Loads all your documents from the Skribble-platform.",
-        "startName" : "Show documents status",
-        "tags" : "demo",
-        "case" : { }
+        "request" : {
+          "name" : "Show documents status",
+          "description" : "Loads all your documents from the Skribble-platform."
+        }
       },
+      "tags" : [
+        "demo"
+      ],
       "visual" : {
         "at" : { "x" : 96, "y" : 232 }
       },
-      "connect" : { "id" : "f7", "to" : "f6" }
+      "connect" : [
+        { "id" : "f7", "to" : "f6" }
+      ]
     }, {
       "id" : "f6",
       "type" : "DialogCall",
@@ -49,8 +57,7 @@
         "on Skribble"
       ],
       "config" : {
-        "dialogId" : "com.axonivy.connector.skribble.demo.Overview",
-        "startMethod" : "start()",
+        "dialog" : "com.axonivy.connector.skribble.demo.Overview:start()",
         "output" : {
           "map" : {
             "out" : "in",
@@ -61,19 +68,22 @@
       "visual" : {
         "at" : { "x" : 256, "y" : 232 }
       },
-      "connect" : { "id" : "f16", "to" : "f10" }
+      "connect" : [
+        { "id" : "f16", "to" : "f10" }
+      ]
     }, {
       "id" : "f9",
       "type" : "DialogCall",
       "name" : "Upload document for signing",
       "config" : {
-        "dialogId" : "com.axonivy.connector.skribble.demo.SignRequest",
-        "startMethod" : "start()"
+        "dialog" : "com.axonivy.connector.skribble.demo.SignRequest:start()"
       },
       "visual" : {
         "at" : { "x" : 256, "y" : 144 }
       },
-      "connect" : { "id" : "f17", "to" : "f15" }
+      "connect" : [
+        { "id" : "f17", "to" : "f15" }
+      ]
     }, {
       "id" : "f10",
       "type" : "TaskEnd",
