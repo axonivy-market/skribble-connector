@@ -20,7 +20,6 @@
       <groupId>com.axonivy.ivy.test</groupId>
       <artifactId>unit-tester</artifactId>
       <version>${tester.version}</version>
-      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>com.axonivy.connector.skribble</groupId>
@@ -55,6 +54,16 @@
         <artifactId>project-build-plugin</artifactId>
         <version>${project.build.plugin.version}</version>
         <extensions>true</extensions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.0.0-M5</version>
+        <configuration>
+            <systemPropertyVariables>
+               <username>${skribble.username}</username>
+               <authKey>${skribble.authKey}</authKey>
+           </systemPropertyVariables>
+        </configuration>
       </plugin>
     </plugins>
   </build>
