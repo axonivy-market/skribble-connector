@@ -5,19 +5,15 @@
   "isBusinessCaseData" : false,
   "fields" : [ {
     "name" : "csr",
-    "type" : "com.skribble.api.v2.client.CreateSignatureRequest",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "com.skribble.api.v2.client.CreateSignatureRequest"
   }, {
     "name" : "fileUploadEvent",
-    "type" : "org.primefaces.event.FileUploadEvent",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "org.primefaces.event.FileUploadEvent"
   }, {
     "name" : "success",
-    "type" : "Boolean",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "Boolean"
   }, {
     "name" : "file",
-    "type" : "File",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "File"
   } ]
 }
