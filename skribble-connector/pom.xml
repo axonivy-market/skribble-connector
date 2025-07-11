@@ -10,7 +10,7 @@
   </parent>
   <groupId>com.axonivy.connector.skribble</groupId>
   <artifactId>skribble-connector</artifactId>
-  <version>12.0.1-SNAPSHOT</version>
+  <version>13.1.1-SNAPSHOT</version>
   <packaging>iar</packaging>
   <properties>
     <project.build.plugin.version>12.0.0</project.build.plugin.version>
@@ -19,7 +19,7 @@
     <dependency>
       <groupId>com.auth0</groupId>
       <artifactId>java-jwt</artifactId>
-      <version>4.4.0</version>
+      <version>4.5.0</version>
       <exclusions>
         <exclusion>
           <groupId>com.fasterxml.jackson.core</groupId>
