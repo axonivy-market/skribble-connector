@@ -5,23 +5,18 @@
   "isBusinessCaseData" : false,
   "fields" : [ {
     "name" : "signatureRequests",
-    "type" : "List<com.skribble.api.v2.client.SignatureRequest>",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "List<com.skribble.api.v2.client.SignatureRequest>"
   }, {
     "name" : "selectedSignatureRequest",
-    "type" : "com.skribble.api.v2.client.SignatureRequest",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "com.skribble.api.v2.client.SignatureRequest"
   }, {
     "name" : "file",
-    "type" : "File",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "File"
   }, {
     "name" : "document",
-    "type" : "com.skribble.api.v2.client.Document",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "com.skribble.api.v2.client.Document"
   }, {
     "name" : "nextView",
-    "type" : "String",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "String"
   } ]
 }
