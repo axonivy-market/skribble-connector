@@ -78,10 +78,18 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>3.0.0-M5</version>
         <configuration>
-            <systemPropertyVariables>
-               <username>${skribble.username}</username>
-               <authKey>${skribble.authKey}</authKey>
-           </systemPropertyVariables>
+          <systemPropertyVariables>
+            <username>${skribble.username}</username>
+            <authKey>${skribble.authKey}</authKey>
+          </systemPropertyVariables>
+          <statelessTestsetReporter
+            implementation="org.apache.maven.plugin.surefire.extensions.junit5.JUnit5Xml30StatelessReporter">
+            <disable>false</disable>
+            <usePhrasedFileName>false</usePhrasedFileName>
+            <usePhrasedTestSuiteClassName>true</usePhrasedTestSuiteClassName>
+            <usePhrasedTestCaseClassName>true</usePhrasedTestCaseClassName>
+            <usePhrasedTestCaseMethodName>true</usePhrasedTestCaseMethodName>
+          </statelessTestsetReporter>
         </configuration>
       </plugin>
     </plugins>
