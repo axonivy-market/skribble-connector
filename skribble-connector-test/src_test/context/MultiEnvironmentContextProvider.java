@@ -17,7 +17,12 @@ public class MultiEnvironmentContextProvider implements TestTemplateInvocationCo
 
   @Override
   public Stream<TestTemplateInvocationContext> provideTestTemplateInvocationContexts(ExtensionContext context) {
-    return Stream.of(new TestEnironmentInvocationContext(SkribbleCommonConstants.REAL_CALL_CONTEXT_DISPLAY_NAME),
-        new TestEnironmentInvocationContext(SkribbleCommonConstants.MOCK_SERVER_CONTEXT_DISPLAY_NAME));
+    String testEnv = System.getProperty(SkribbleCommonConstants.END_TO_END_TESTING_ENVIRONMENT_KEY);
+    return switch (testEnv) {
+    case SkribbleCommonConstants.END_TO_END_TESTING_ENVIRONMENT_VALUE ->
+      Stream.of(new TestEnvironmentInvocationContext(SkribbleCommonConstants.REAL_CALL_CONTEXT_DISPLAY_NAME));
+    default ->
+      Stream.of(new TestEnvironmentInvocationContext(SkribbleCommonConstants.MOCK_SERVER_CONTEXT_DISPLAY_NAME));
+    };
   }
 }
