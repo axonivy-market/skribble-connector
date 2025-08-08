@@ -3,6 +3,8 @@ package com.axonivy.connector.skribble.test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.TestTemplate;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -10,7 +12,11 @@ import org.junit.jupiter.api.extension.ExtensionContext;
 
 import com.axonivy.connector.skribble.demo.SampleHelper;
 import com.axonivy.connector.skribble.documents.DocumentsData;
+import com.axonivy.connector.skribble.mocks.SkribbleServiceMock;
 import com.axonivy.connector.skribble.signaturerequest.SignatureRequestData;
+import com.axonivy.ivy.unittester.constants.UnitTesterConstants;
+import com.axonivy.ivy.unittester.context.MultiEnvironmentContextProvider;
+import com.axonivy.ivy.unittester.utils.UnitTesterUtils;
 import com.skribble.api.v2.client.CreateSignature;
 import com.skribble.api.v2.client.CreateSignatureRequest;
 
@@ -19,9 +25,9 @@ import ch.ivyteam.ivy.bpm.engine.client.element.BpmElement;
 import ch.ivyteam.ivy.bpm.engine.client.element.BpmProcess;
 import ch.ivyteam.ivy.bpm.exec.client.IvyProcessTest;
 import ch.ivyteam.ivy.environment.AppFixture;
+import ch.ivyteam.ivy.rest.client.mapper.JsonFeature;
+import ch.ivyteam.ivy.rest.client.security.CsrfHeaderFeature;
 import constants.SkribbleCommonConstants;
-import context.MultiEnvironmentContextProvider;
-import utils.SkribbleUtils;
 
 @IvyProcessTest(enableWebServer = true)
 @ExtendWith(MultiEnvironmentContextProvider.class)
@@ -40,12 +46,25 @@ class TestApiSubProcess {
 
   @BeforeEach
   void setup(ExtensionContext context, AppFixture fixture) {
-    SkribbleUtils.setUpConfigForContext(context.getDisplayName(), fixture);
+    Runnable realRun = () -> {
+      String username = System.getProperty(SkribbleCommonConstants.USERNAME);
+      String authKey = System.getProperty(SkribbleCommonConstants.AUTH_KEY);
+      fixture.var("skribbleConnector.username", username);
+      fixture.var("skribbleConnector.authKey", authKey);
+    };
+
+    Runnable mockRun = () -> {
+      fixture.config("RestClients.Skribble.Url", SkribbleServiceMock.URI);
+      fixture.config("RestClients.Skribble.Features",
+          List.of(JsonFeature.class.getName(), CsrfHeaderFeature.class.getName()));
+    };
+
+    UnitTesterUtils.setUpConfigForContext(context.getDisplayName(), realRun, mockRun);
   }
 
   @TestTemplate
   void callSubProcess_getAllSignatureRequest(ExtensionContext context, BpmClient bpmClient) {
-    boolean isRealTest = context.getDisplayName().equals(SkribbleCommonConstants.REAL_CALL_CONTEXT_DISPLAY_NAME);
+    boolean isRealTest = context.getDisplayName().equals(UnitTesterConstants.REAL_CALL_CONTEXT_DISPLAY_NAME);
     var result = bpmClient.start().subProcess(Start.GET_ALL_SIGNATURE_REQUEST).execute();
     SignatureRequestData data = result.data().last();
 
@@ -62,7 +81,7 @@ class TestApiSubProcess {
 
   @TestTemplate
   void callSubProcess_getDocumentContent(ExtensionContext context, BpmClient bpmClient) {
-    String documentId = context.getDisplayName().equals(SkribbleCommonConstants.REAL_CALL_CONTEXT_DISPLAY_NAME)
+    String documentId = context.getDisplayName().equals(UnitTesterConstants.REAL_CALL_CONTEXT_DISPLAY_NAME)
         ? "d76812ab-e3cc-a709-a928-5bf5899a93a2"
         : "20c535e0-4260-f52a-b2ba-a45eb280d9a3";
     var result = bpmClient.start().subProcess(Start.GET_DOCUMENT_CONTENT).withParam("documentId", documentId).execute();
@@ -72,7 +91,7 @@ class TestApiSubProcess {
 
   @TestTemplate
   void callSubProcess_getDocumentMeta(ExtensionContext context, BpmClient bpmClient) {
-    boolean isRealTest = context.getDisplayName().equals(SkribbleCommonConstants.REAL_CALL_CONTEXT_DISPLAY_NAME);
+    boolean isRealTest = context.getDisplayName().equals(UnitTesterConstants.REAL_CALL_CONTEXT_DISPLAY_NAME);
     String documentId = isRealTest ? "d76812ab-e3cc-a709-a928-5bf5899a93a2" : "20c535e0-4260-f52a-b2ba-a45eb280d9a3";
     var result = bpmClient.start().subProcess(Start.GET_DOCUMENT_META).withParam("documentId", documentId).execute();
     DocumentsData data = result.data().last();
@@ -86,7 +105,7 @@ class TestApiSubProcess {
   @TestTemplate
   void callSubProcess_createSignatureRequest(ExtensionContext context, BpmClient bpmClient)
       throws NoSuchFieldException {
-    boolean isRealTest = context.getDisplayName().equals(SkribbleCommonConstants.REAL_CALL_CONTEXT_DISPLAY_NAME);
+    boolean isRealTest = context.getDisplayName().equals(UnitTesterConstants.REAL_CALL_CONTEXT_DISPLAY_NAME);
     CreateSignatureRequest sample = SampleHelper.createSignatureRequestDocSample("Test-Title", "Test-message");
     CreateSignature cs = SampleHelper.createSignature("max.muster@yxz.com", false);
     cs.setSignerIdentityData(SampleHelper.createSignerIdentityData("max.muster@yxz.com", "Max", "Muster"));
