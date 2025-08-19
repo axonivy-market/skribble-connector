@@ -27,12 +27,14 @@ import ch.ivyteam.ivy.rest.client.mapper.JsonFeature;
 import ch.ivyteam.ivy.rest.client.security.CsrfHeaderFeature;
 import constants.SkribbleCommonConstants;
 import static com.axonivy.utils.e2etest.enums.E2EEnvironment.REAL_SERVER;
+
 @IvyProcessTest(enableWebServer = true)
 @ExtendWith(MultiEnvironmentContextProvider.class)
 class TestApiSubProcess {
 
   private static final BpmProcess SIGNATURE_REQUEST = BpmProcess.name("SignatureRequest");
   private static final BpmProcess DOCUMENTS = BpmProcess.name("Documents");
+  private boolean isRealTest;
 
   private interface Start {
     BpmElement GET_ALL_SIGNATURE_REQUEST = SIGNATURE_REQUEST.elementName("getAll(SignatureRequestSearchParameters)");
@@ -44,6 +46,7 @@ class TestApiSubProcess {
 
   @BeforeEach
   void setup(ExtensionContext context, AppFixture fixture) {
+    isRealTest = context.getDisplayName().equals(REAL_SERVER.getDisplayName());
     Runnable realRun = () -> {
       String username = System.getProperty(SkribbleCommonConstants.USERNAME);
       String authKey = System.getProperty(SkribbleCommonConstants.AUTH_KEY);
@@ -62,7 +65,6 @@ class TestApiSubProcess {
 
   @TestTemplate
   void callSubProcess_getAllSignatureRequest(ExtensionContext context, BpmClient bpmClient) {
-    boolean isRealTest = context.getDisplayName().equals(REAL_SERVER.getDisplayName());
     var result = bpmClient.start().subProcess(Start.GET_ALL_SIGNATURE_REQUEST).execute();
     SignatureRequestData data = result.data().last();
 
@@ -79,8 +81,7 @@ class TestApiSubProcess {
 
   @TestTemplate
   void callSubProcess_getDocumentContent(ExtensionContext context, BpmClient bpmClient) {
-    String documentId = context.getDisplayName().equals(REAL_SERVER.getDisplayName()) ? 
-              "d76812ab-e3cc-a709-a928-5bf5899a93a2" : "20c535e0-4260-f52a-b2ba-a45eb280d9a3";
+    String documentId = isRealTest ? "d76812ab-e3cc-a709-a928-5bf5899a93a2" : "20c535e0-4260-f52a-b2ba-a45eb280d9a3";
     var result = bpmClient.start().subProcess(Start.GET_DOCUMENT_CONTENT).withParam("documentId", documentId).execute();
     DocumentsData data = result.data().last();
     assertThat(data.getContent()).startsWith("JVBER");
@@ -88,7 +89,6 @@ class TestApiSubProcess {
 
   @TestTemplate
   void callSubProcess_getDocumentMeta(ExtensionContext context, BpmClient bpmClient) {
-    boolean isRealTest = context.getDisplayName().equals(REAL_SERVER.getDisplayName());
     String documentId = isRealTest ? "d76812ab-e3cc-a709-a928-5bf5899a93a2" : "20c535e0-4260-f52a-b2ba-a45eb280d9a3";
     var result = bpmClient.start().subProcess(Start.GET_DOCUMENT_META).withParam("documentId", documentId).execute();
     DocumentsData data = result.data().last();
@@ -102,7 +102,6 @@ class TestApiSubProcess {
   @TestTemplate
   void callSubProcess_createSignatureRequest(ExtensionContext context, BpmClient bpmClient)
       throws NoSuchFieldException {
-    boolean isRealTest = context.getDisplayName().equals(REAL_SERVER.getDisplayName());
     CreateSignatureRequest sample = SampleHelper.createSignatureRequestDocSample("Test-Title", "Test-message");
     CreateSignature cs = SampleHelper.createSignature("max.muster@yxz.com", false);
     cs.setSignerIdentityData(SampleHelper.createSignerIdentityData("max.muster@yxz.com", "Max", "Muster"));
