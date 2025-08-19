@@ -14,7 +14,7 @@ import com.axonivy.connector.skribble.documents.DocumentsData;
 import com.axonivy.connector.skribble.mocks.SkribbleServiceMock;
 import com.axonivy.connector.skribble.signaturerequest.SignatureRequestData;
 import com.axonivy.utils.e2eTest.context.MultiEnvironmentContextProvider;
-import com.axonivy.utils.e2eTest.utils.E2eTestUtils;
+import com.axonivy.utils.e2eTest.utils.E2ETestUtils;
 import com.skribble.api.v2.client.CreateSignature;
 import com.skribble.api.v2.client.CreateSignatureRequest;
 
@@ -26,8 +26,7 @@ import ch.ivyteam.ivy.environment.AppFixture;
 import ch.ivyteam.ivy.rest.client.mapper.JsonFeature;
 import ch.ivyteam.ivy.rest.client.security.CsrfHeaderFeature;
 import constants.SkribbleCommonConstants;
-
-import static com.axonivy.utils.e2eTest.constants.E2eTestConstants.REAL_CALL_CONTEXT_DISPLAY_NAME;
+import static com.axonivy.utils.e2eTest.constants.E2ETestConstants.REAL_CALL_CONTEXT_DISPLAY_NAME;
 
 @IvyProcessTest(enableWebServer = true)
 @ExtendWith(MultiEnvironmentContextProvider.class)
@@ -59,7 +58,7 @@ class TestApiSubProcess {
           List.of(JsonFeature.class.getName(), CsrfHeaderFeature.class.getName()));
     };
 
-    E2eTestUtils.setUpConfigForContext(context.getDisplayName(), realRun, mockRun);
+    E2ETestUtils.setUpConfigForContext(context.getDisplayName(), realRun, mockRun);
   }
 
   @TestTemplate
@@ -82,7 +81,7 @@ class TestApiSubProcess {
   @TestTemplate
   void callSubProcess_getDocumentContent(ExtensionContext context, BpmClient bpmClient) {
     String documentId = context.getDisplayName().equals(REAL_CALL_CONTEXT_DISPLAY_NAME) ? 
-            "d76812ab-e3cc-a709-a928-5bf5899a93a2" : "20c535e0-4260-f52a-b2ba-a45eb280d9a3";
+              "d76812ab-e3cc-a709-a928-5bf5899a93a2" : "20c535e0-4260-f52a-b2ba-a45eb280d9a3";
     var result = bpmClient.start().subProcess(Start.GET_DOCUMENT_CONTENT).withParam("documentId", documentId).execute();
     DocumentsData data = result.data().last();
     assertThat(data.getContent()).startsWith("JVBER");
