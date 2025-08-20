@@ -1,5 +1,6 @@
 package com.axonivy.connector.skribble.test;
 
+import static com.axonivy.utils.e2etest.enums.E2EEnvironment.REAL_SERVER;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -9,6 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.TestTemplate;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.extension.ExtensionContext;
+
 import com.axonivy.connector.skribble.demo.SampleHelper;
 import com.axonivy.connector.skribble.documents.DocumentsData;
 import com.axonivy.connector.skribble.mocks.SkribbleServiceMock;
@@ -26,7 +28,6 @@ import ch.ivyteam.ivy.environment.AppFixture;
 import ch.ivyteam.ivy.rest.client.mapper.JsonFeature;
 import ch.ivyteam.ivy.rest.client.security.CsrfHeaderFeature;
 import constants.SkribbleCommonConstants;
-import static com.axonivy.utils.e2etest.enums.E2EEnvironment.REAL_SERVER;
 
 @IvyProcessTest(enableWebServer = true)
 @ExtendWith(MultiEnvironmentContextProvider.class)
@@ -44,30 +45,33 @@ class TestApiSubProcess {
     BpmElement DELETE_DOCUMENT = SIGNATURE_REQUEST.elementName("delete(SignatureRequest)");
   }
 
-  @BeforeEach
-  void setup(ExtensionContext context, AppFixture fixture) {
-    isRealTest = context.getDisplayName().equals(REAL_SERVER.getDisplayName());
-    Runnable realRun = () -> {
+  private Runnable runRealEnv(AppFixture fixture) {
+    return () -> {
       String username = System.getProperty(SkribbleCommonConstants.USERNAME);
       String authKey = System.getProperty(SkribbleCommonConstants.AUTH_KEY);
       fixture.var("skribbleConnector.username", username);
       fixture.var("skribbleConnector.authKey", authKey);
     };
+  }
 
-    Runnable mockRun = () -> {
+  private Runnable runMockEnv(AppFixture fixture) {
+    return () -> {
       fixture.config("RestClients.Skribble.Url", SkribbleServiceMock.URI);
       fixture.config("RestClients.Skribble.Features",
           List.of(JsonFeature.class.getName(), CsrfHeaderFeature.class.getName()));
     };
+  }
 
-    E2ETestUtils.determineConfigForContext(context.getDisplayName(), realRun, mockRun);
+  @BeforeEach
+  void setup(ExtensionContext context, AppFixture fixture) {
+    isRealTest = context.getDisplayName().equals(REAL_SERVER.getDisplayName());
+    E2ETestUtils.determineConfigForContext(context.getDisplayName(), runRealEnv(fixture), runMockEnv(fixture));
   }
 
   @TestTemplate
   void callSubProcess_getAllSignatureRequest(ExtensionContext context, BpmClient bpmClient) {
     var result = bpmClient.start().subProcess(Start.GET_ALL_SIGNATURE_REQUEST).execute();
     SignatureRequestData data = result.data().last();
-
     if (isRealTest) {
       assertThat(data.getSignatureRequests()).hasSizeGreaterThanOrEqualTo(1);
     } else {
