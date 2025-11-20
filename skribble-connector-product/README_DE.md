@@ -1,66 +1,68 @@
-# Skribble-Anschluss
+# Skribble-Connector
 
-[Skribble](https://www.skribble.com/de-de/) ist eine moderne digitale
-Unterschrift Bahnsteig versieht jener legal verbindlich elektronische
-Unterschriften konform mit europäisch Gesetze. Benutzen unser Skribble Anschluss
-zu gewinnen zugreifen zu den Skribble Charakterzüge, mögen
+[Skribble](https://www.skribble.com/de-de/) ist eine moderne Plattform für
+digitale Signaturen, die rechtsverbindliche elektronische Signaturen gemäß den
+europäischen Gesetzen bereitstellt. Nutzen Sie unseren Skribble-Konnektor, um
+Zugriff auf die Skribble-Funktionen zu erhalten, wie z. B.
 
-- Schaffend herein Unterschriften #ein befestigen und legal konformen Weg
-- Überwachend Unterschrift Arbeitsgänge
+- Erstellen von Signaturen auf sichere und rechtskonforme Weise
+- Überwachung von Signaturprozessen
 
-Einfaches #Herunterladen der Anschluss hinein euren #Axon Efeu Designer und
-starten den Demo Arbeitsgang!
+Laden Sie einfach den Connector in Ihren Axon Ivy Designer herunter und starten
+Sie den Demo-Prozess!
 
 ## Demo
 
-Eine neue Unterschrift Bitten können sein geschafft und überwacht via die Demo.
-Ob eine Unterschrift Bitte ist geschafft, die Unterschrift Verifikation will
-sein bedient über den Bahnsteig. Jeder Teilnehmer hat vollen Zugang zu ihr
-besitzen Dokumente und können signieren oder aussterben ihnen.
+Über die Demo können neue Signaturanfragen erstellt und überwacht werden. Wenn
+eine Signaturanfrage erstellt wird, wird die Signaturüberprüfung über die
+Plattform abgewickelt. Jeder Teilnehmer hat vollen Zugriff auf seine eigenen
+Dokumente und kann diese unterzeichnen oder ablehnen.
 
-Auf der Demo ist dort zwei verarbeitet: Der erste Arbeitsgang zu schaffen ein
-leichtes Zwiegespräch eine neue Unterschrift Bitte und die zweiten Vorstellungen
-alle die Unterschrift Bitte mit ihr besitzen Zustand.
+In der Demo gibt es zwei Prozesse: Der erste Prozess ist ein einfacher Dialog
+zum Erstellen einer neuen Signaturanforderung, und der zweite zeigt alle
+Signaturanforderungen mit ihrem jeweiligen Status an.
 
-Schaffend einen neuen #Unterfertigter Bitte, #hochladen eure Dokument #welche
-muss sein signieren und zufügen euren #Unterfertigter.
-![Image](images/request1.png)
+Erstellen Sie eine neue Signaturanforderung, laden Sie Ihr zu signierendes
+Dokument hoch und fügen Sie Ihren Unterzeichner hinzu.
+![image](images/request1.png)
 
-Ladungen alle eure Dokumente von die Skribbleplatform. Ob du schafftest
-erfolgreich eine Bitte willst du sehen ihm hier. ![Image](images/overview1.png)
+Lädt alle Ihre Dokumente von der Skribble-Plattform. Wenn Sie erfolgreich eine
+Anfrage erstellt haben, wird diese hier angezeigt. ![Bild](images/overview1.png)
 
-Dokumentieren #anschauen weiter das Skribbleplatform da einen #Unterfertigter
-![Image](images/skribble_doc_view1.png)
+Dokumentansicht auf der Skribble-Plattform als Unterzeichner
+![Bild](images/skribble_doc_view1.png)
 
-Erfrisch das overviewpage und du willst den Zustand auf dem #Unterfertigter
-sehen und dem overallstatus ist gewechselt. ![Image](images/overview2.png)
+Aktualisieren Sie die Übersichtsseite, und Sie werden sehen, dass sich der
+Status des Unterzeichners und der Gesamtstatus geändert haben.
+![Bild](images/overview2.png)
 
-Zu bekommen ein Indiz von einem #Unterfertigter ist dort zwei leichte Optionen:
--Setzen das #bekannt geben ab Parameter den #Unterfertigter weiter wahr und er
-will recieve direkt eine Post von die skribble Bahnsteig shorty nach der Bitte.
--Oder ob du willst #bekannt geben #er selbst du können ausschalten das notiy und
-senden ihm das url über eure besitzen Brauch stylte #mailen.
+Um eine Unterschrift von einem Unterzeichner zu erhalten, gibt es zwei einfache
+Möglichkeiten: - Setzen Sie den Benachrichtigungsparameter des Unterzeichners
+auf „true” und er erhält kurz nach der Anfrage direkt eine E-Mail von der
+Skribble-Plattform. - Wenn Sie ihn selbst benachrichtigen möchten, können Sie
+die Benachrichtigung deaktivieren und ihm die URL über Ihre eigene, individuell
+gestaltete E-Mail senden.
 
-Dort sind drei Optionen für signieren Verifikation: SES, AES Und QES
+Es gibt drei Optionen für die Signaturüberprüfung: SES, AES und QES.
 
 
 ## Einrichtung
 
-Vor irgendwelche #Unterschrift Interaktionen zwischen die **#Axon Efeu Motor**
-und der **Skribble-Bahnsteig** Bedienungen können sein gerannt, sie müssen sein
-hereingebracht zu #jede #andere. Dies kann sein getan folgendermaßen:
+Bevor Signaturvorgänge zwischen den Diensten „ **” (Axon Ivy Engine,** ) und „
+**” (Skribble-Plattform,** ) ausgeführt werden können, müssen diese Dienste
+einander vorgestellt werden. Dies kann wie folgt erfolgen:
 
-1. Schaff ein **Verrechnen** verrechnen:
-   **[Hier](https://my.skribble.com/business/signup/?lang=en) **
+1. Erstellen Sie ein **-Konto** -Konto:
+   **[hier](https://my.skribble.com/business/signup/?lang=en) **
 
-2. Schaff ein **Demo API #eintasten** für #mehr Auskunft Sprung zu den admin
-   Dokumentation:
-   **[Hier](https://docs.skribble.com/business-admin/api/apicreate#create-api-keys)
+2. ** Erstellen Sie einen Demo-API-Schlüssel unter **. Weitere Informationen
+   finden Sie in der Admin-Dokumentation:
+   **[hier](https://docs.skribble.com/business-admin/api/apicreate#create-api-keys).
    **
 
-3. Öffnen das `Konfiguration/Variablen.yaml` In eurem Designer und setzen den
-   Benutzernamen und den apikey von welcher du machst weiter den
-   skribbleplattform
+3. Öffnen Sie die Datei „ `Configuration/variables.yaml”` in Ihrem Designer und
+   legen Sie den Benutzernamen und den API-Schlüssel fest, die Sie auf der
+   Skribble-Plattform erhalten haben.
 
    ```
     # == Variables ==
@@ -75,4 +77,5 @@ hereingebracht zu #jede #andere. Dies kann sein getan folgendermaßen:
 
    ```
 
-4. Speicher die #abgeändert Lagen und starten einen Demo Arbeitsgang
+4. Speichern Sie die geänderten Einstellungen und starten Sie einen
+   Demo-Prozess.
