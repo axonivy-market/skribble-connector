@@ -13,7 +13,7 @@ public class CmsLoader {
   public static File loadSampleFromCms() throws IOException {
     var ivyFile = new File("invoice.pdf", true);
     Path path = ivyFile.getJavaFile().toPath();
-    Files.copy(Ivy.cms().get("/sample/invoice.pdf").get().value().get().read().inputStream(), path, StandardCopyOption.REPLACE_EXISTING);
+    Files.copy(Ivy.cms().get("/sample/invoice").get().value().get().read().inputStream(), path, StandardCopyOption.REPLACE_EXISTING);
     return ivyFile;
   }
 }
