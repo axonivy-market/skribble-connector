@@ -1,5 +1,5 @@
 {
-  "$schema" : "https://json-schema.axonivy.com/process/13.1.2/process.json",
+  "$schema" : "https://json-schema.axonivy.com/process/12.0.0/process.json",
   "id" : "1918EA71B7CFD733",
   "kind" : "HTML_DIALOG",
   "config" : {
@@ -32,12 +32,12 @@
       "config" : {
         "output" : {
           "code" : [
-            "import com.axonivy.connector.skribble.demo.LocalFileLoader;",
+            "import com.axonivy.connector.skribble.demo.CmsLoader;",
             "import com.axonivy.connector.skribble.demo.SampleHelper;",
             "import java.util.Base64;",
             "",
             "out.csr = SampleHelper.createSignatureRequestDocSample(\"Your Document Title\", \"Your Message\");",
-            "out.file = LocalFileLoader.loadFromWebContent(\"sample/rechnung.pdf\");",
+            "out.file = CmsLoader.loadSampleFromCms();",
             "out.csr.content(Base64.getEncoder().encodeToString(out.file.readBinary()));"
           ]
         }
