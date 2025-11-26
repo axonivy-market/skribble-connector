@@ -46,7 +46,7 @@ gestaltete E-Mail senden.
 Es gibt drei Optionen für die Signaturüberprüfung: SES, AES und QES.
 
 
-## Einrichtung
+## Setup
 
 Bevor Signaturvorgänge zwischen den Diensten „ **” (Axon Ivy Engine,** ) und „
 **” (Skribble-Plattform,** ) ausgeführt werden können, müssen diese Dienste
