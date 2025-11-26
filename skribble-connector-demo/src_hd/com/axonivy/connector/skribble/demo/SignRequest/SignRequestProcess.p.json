@@ -32,12 +32,12 @@
       "config" : {
         "output" : {
           "code" : [
-            "import com.axonivy.connector.skribble.demo.LocalFileLoader;",
+            "import com.axonivy.connector.skribble.demo.CmsLoader;",
             "import com.axonivy.connector.skribble.demo.SampleHelper;",
             "import java.util.Base64;",
             "",
             "out.csr = SampleHelper.createSignatureRequestDocSample(\"Your Document Title\", \"Your Message\");",
-            "out.file = LocalFileLoader.loadFromWebContent(\"sample/rechnung.pdf\");",
+            "out.file = CmsLoader.loadSampleFromCms();",
             "out.csr.content(Base64.getEncoder().encodeToString(out.file.readBinary()));"
           ]
         }
