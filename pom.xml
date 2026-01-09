@@ -7,14 +7,14 @@
   <packaging>pom</packaging>
 
   <modules>
-    <module>${project.name}</module>
-    <module>${project.name}-demo</module>
-    <module>${project.name}-test</module>
-    <module>${project.name}-product</module>
+    <module>skribble-connector</module>
+    <module>skribble-connector-demo</module>
+    <module>skribble-connector-test</module>
+    <module>skribble-connector-product</module>
   </modules>
 
   <scm>
-    <developerConnection>scm:git:https://github.com/axonivy-market/${project.name}.git</developerConnection>
+    <developerConnection>scm:git:https://github.com/axonivy-market/skribble-connector.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
 
