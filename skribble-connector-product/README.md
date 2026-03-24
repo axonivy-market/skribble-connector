@@ -42,7 +42,7 @@ Before any signing interactions between the **Axon Ivy Engine** and the **Skribb
 
 2. Create an **demo API key** for more information jump to the admin documentation: **[here](https://docs.skribble.com/business-admin/api/apicreate#create-api-keys) **
 
-3. Open the `Configuration/variables.yaml` in your Designer and set the username and the apikey from which you get on the skribble plattform
+3. Open the `Configuration/variables.yaml` in your Designer and set the username and the apikey from which you get on the skribble platform
 
    ```
 	# == Variables ==
