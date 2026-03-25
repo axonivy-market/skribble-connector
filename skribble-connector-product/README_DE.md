@@ -26,22 +26,19 @@ Erstellen Sie eine neue Signaturanforderung, laden Sie Ihr zu signierendes
 Dokument hoch und fügen Sie Ihren Unterzeichner hinzu.
 ![image](images/request1.png)
 
-Lädt alle Ihre Dokumente von der Skribble-Plattform. Wenn Sie erfolgreich eine
-Anfrage erstellt haben, wird diese hier angezeigt. ![Bild](images/overview1.png)
+Loads all your documents from the Skribble platform. If you created successfully
+a Request you will see it here. ![image](images/overview1.png)
 
-Dokumentansicht auf der Skribble-Plattform als Unterzeichner
-![Bild](images/skribble_doc_view1.png)
+Document view on the Skribble platform as a signer
+![image](images/skribble_doc_view1.png)
 
-Aktualisieren Sie die Übersichtsseite, und Sie werden sehen, dass sich der
-Status des Unterzeichners und der Gesamtstatus geändert haben.
-![Bild](images/overview2.png)
+Refresh the overview page and you will see the status on the signer and the
+overall status are changed. ![image](images/overview2.png)
 
-Um eine Unterschrift von einem Unterzeichner zu erhalten, gibt es zwei einfache
-Möglichkeiten: - Setzen Sie den Benachrichtigungsparameter des Unterzeichners
-auf „true” und er erhält kurz nach der Anfrage direkt eine E-Mail von der
-Skribble-Plattform. - Wenn Sie ihn selbst benachrichtigen möchten, können Sie
-die Benachrichtigung deaktivieren und ihm die URL über Ihre eigene, individuell
-gestaltete E-Mail senden.
+To get a Sign from a signer there are two easy options: -set the notify
+parameter off the signer on true and he will receive directly a mail from the
+skribble platform shorty after the request. -or if you want notify himself you
+can disable the notify and send him the url over your own custom styled email.
 
 Es gibt drei Optionen für die Signaturüberprüfung: SES, AES und QES.
 
@@ -60,21 +57,19 @@ einander vorgestellt werden. Dies kann wie folgt erfolgen:
    **[hier](https://docs.skribble.com/business-admin/api/apicreate#create-api-keys).
    **
 
-3. Öffnen Sie die Datei „ `Configuration/variables.yaml”` in Ihrem Designer und
-   legen Sie den Benutzernamen und den API-Schlüssel fest, die Sie auf der
-   Skribble-Plattform erhalten haben.
+3. Open the `Configuration/variables.yaml` in your Designer and set the username
+   and the apikey from which you get on the skribble platform
 
    ```
-    # == Variables ==
+   # == Variables ==
     Variables:
-      #set all paramaters for Skribble-connector
+      #set all parameters for Skribble-connector
       skribbleConnector:
         #username
         username: 'api_demo_xxxxx'   #<-- paste here your username
         #apikey
         #[password]
         authKey: ${decrypt:\u00AF\u00A8...}   #<-- paste here your apikey and encrypt it
-
    ```
 
 4. Speichern Sie die geänderten Einstellungen und starten Sie einen
