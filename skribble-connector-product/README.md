@@ -17,19 +17,19 @@ On the demo there are two processes: The first process is an easy dialog to crea
 Creating a new Signer Request, upload your document which has to be sign and add your signer.
 ![image](images/request1.png)
 
-Loads all your documents from the Skribbleplatform.
+Loads all your documents from the Skribble platform.
 If you created successfully a Request you will see it here. 
 ![image](images/overview1.png)
 
-Document view on the Skribbleplatform as a signer
+Document view on the Skribble platform as a signer
 ![image](images/skribble_doc_view1.png)
 
-Refresh the overviewpage and you will see the status on the signer and the overallstatus are changed.
+Refresh the overview page and you will see the status on the signer and the overall status are changed.
 ![image](images/overview2.png)
 
 To get a Sign from a signer there are two easy options:
-	-set the notify parameter off the signer on true and he will recieve directly a mail from the skribble platform shorty after the request.
-	-or if you want notify himself you can disable the notiy and send him the url over your own custom styled email.
+	-set the notify parameter off the signer on true and he will receive directly a mail from the skribble platform shorty after the request.
+	-or if you want notify himself you can disable the notify and send him the url over your own custom styled email.
 	
 There are three options for signing verification: SES, AES and QES	
 
@@ -42,12 +42,12 @@ Before any signing interactions between the **Axon Ivy Engine** and the **Skribb
 
 2. Create an **demo API key** for more information jump to the admin documentation: **[here](https://docs.skribble.com/business-admin/api/apicreate#create-api-keys) **
 
-3. Open the `Configuration/variables.yaml` in your Designer and set the username and the apikey from which you get on the skribbleplattform
+3. Open the `Configuration/variables.yaml` in your Designer and set the username and the apikey from which you get on the skribble platform
 
    ```
 	# == Variables ==
 	Variables:
-	  #set all paramaters for Skribble-connector
+	  #set all parameters for Skribble-connector
 	  skribbleConnector:
 	    #username
 	    username: 'api_demo_xxxxx'   #<-- paste here your username
