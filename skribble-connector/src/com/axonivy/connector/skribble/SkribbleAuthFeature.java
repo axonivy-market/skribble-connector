@@ -2,7 +2,6 @@ package com.axonivy.connector.skribble;
 
 import java.io.IOException;
 import java.time.Instant;
-import java.util.UUID;
 
 import javax.ws.rs.Priorities;
 import javax.ws.rs.client.ClientRequestContext;
@@ -20,6 +19,8 @@ import ch.ivyteam.ivy.environment.Ivy;
 import ch.ivyteam.ivy.rest.client.FeatureConfig;
 
 public class SkribbleAuthFeature implements Feature {
+
+  private static final String REST_CLIENT_NAME = "Skribble";
 
   @Override
   public boolean configure(FeatureContext context) {
@@ -63,7 +64,7 @@ public class SkribbleAuthFeature implements Feature {
       login.setApiKey(key);
       login.setUsername(config.readMandatory("AUTH.username"));
 
-      return Ivy.rest().client(UUID.fromString("6c92d3d7-cb33-4cfa-964a-8242ad165742"))
+      return Ivy.rest().client(REST_CLIENT_NAME)
               .path("v2/access/login")
               .request().post(Entity.entity(login, MediaType.APPLICATION_JSON), String.class);
     }
