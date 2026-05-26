@@ -1,5 +1,5 @@
 {
-  "$schema" : "https://json-schema.axonivy.com/process/13.2.0/process.json",
+  "$schema" : "https://json-schema.axonivy.com/14.0-dev/project/process.json",
   "id" : "19150ED527CCE86A",
   "kind" : "CALLABLE_SUB",
   "config" : {
@@ -48,7 +48,7 @@
       "config" : {
         "method" : "POST",
         "target" : {
-          "clientId" : "6c92d3d7-cb33-4cfa-964a-8242ad165742",
+          "clientId" : "Skribble",
           "path" : "v2/signature-requests",
           "templateParams" : {
             "version" : "\"\""
@@ -127,7 +127,7 @@
       "name" : "get signature-requests",
       "config" : {
         "target" : {
-          "clientId" : "6c92d3d7-cb33-4cfa-964a-8242ad165742",
+          "clientId" : "Skribble",
           "path" : "v2/signature-requests/{id}",
           "templateParams" : {
             "id" : "in.signatureRequest.id",
@@ -207,7 +207,7 @@
       "name" : "get All signature-requests",
       "config" : {
         "target" : {
-          "clientId" : "6c92d3d7-cb33-4cfa-964a-8242ad165742",
+          "clientId" : "Skribble",
           "path" : "v2/signature-requests",
           "templateParams" : {
             "version" : "in.searchParameters.version"
@@ -295,7 +295,7 @@
       "config" : {
         "method" : "DELETE",
         "target" : {
-          "clientId" : "6c92d3d7-cb33-4cfa-964a-8242ad165742",
+          "clientId" : "Skribble",
           "path" : "v2/signature-requests/{id}",
           "templateParams" : {
             "id" : "in.signatureRequest.id",
