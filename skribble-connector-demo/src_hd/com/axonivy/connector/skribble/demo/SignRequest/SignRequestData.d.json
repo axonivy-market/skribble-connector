@@ -1,19 +1,22 @@
 {
-  "$schema" : "https://json-schema.axonivy.com/data-class/12.0.0/data-class.json",
+  "$schema" : "https://json-schema.axonivy.com/14.0-dev/project/data-class.json",
   "simpleName" : "SignRequestData",
   "namespace" : "com.axonivy.connector.skribble.demo.SignRequest",
-  "isBusinessCaseData" : false,
   "fields" : [ {
     "name" : "csr",
-    "type" : "com.skribble.api.v2.client.CreateSignatureRequest"
+    "type" : "com.skribble.api.v2.client.CreateSignatureRequest",
+    "modifiers" : [ ]
   }, {
     "name" : "fileUploadEvent",
-    "type" : "org.primefaces.event.FileUploadEvent"
+    "type" : "org.primefaces.event.FileUploadEvent",
+    "modifiers" : [ ]
   }, {
     "name" : "success",
-    "type" : "Boolean"
+    "type" : "Boolean",
+    "modifiers" : [ ]
   }, {
     "name" : "file",
-    "type" : "File"
+    "type" : "File",
+    "modifiers" : [ ]
   } ]
 }

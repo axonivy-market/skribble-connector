@@ -1,16 +1,17 @@
 {
-  "$schema" : "https://json-schema.axonivy.com/data-class/13.1.0/data-class.json",
+  "$schema" : "https://json-schema.axonivy.com/14.0-dev/project/data-class.json",
   "simpleName" : "SampleProcessData",
   "namespace" : "com.axonivy.connector.skribble.demo",
-  "isBusinessCaseData" : false,
   "fields" : [ {
     "name" : "createSignatureRequest",
-    "type" : "com.skribble.api.v2.client.CreateSignatureRequest"
+    "type" : "com.skribble.api.v2.client.CreateSignatureRequest",
+    "modifiers" : [ ]
   }, {
     "name" : "signatureRequest",
-    "type" : "com.skribble.api.v2.client.SignatureRequest"
+    "type" : "com.skribble.api.v2.client.SignatureRequest",
+    "modifiers" : [ ]
   }, {
     "name" : "nextView",
-    "type" : "String"
+    "modifiers" : [ ]
   } ]
 }

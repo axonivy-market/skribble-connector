@@ -1,26 +1,22 @@
 {
-  "$schema" : "https://json-schema.axonivy.com/data-class/12.0.0/data-class.json",
+  "$schema" : "https://json-schema.axonivy.com/14.0-dev/project/data-class.json",
   "simpleName" : "SignatureRequestData",
   "namespace" : "com.axonivy.connector.skribble.signaturerequest",
-  "isBusinessCaseData" : false,
   "fields" : [ {
     "name" : "createSignatureRequest",
-    "type" : "com.skribble.api.v2.client.CreateSignatureRequest",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "com.skribble.api.v2.client.CreateSignatureRequest"
   }, {
     "name" : "signatureRequest",
-    "type" : "com.skribble.api.v2.client.SignatureRequest",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "com.skribble.api.v2.client.SignatureRequest"
   }, {
     "name" : "signatureRequests",
-    "type" : "List<com.skribble.api.v2.client.SignatureRequest>"
+    "type" : "List<com.skribble.api.v2.client.SignatureRequest>",
+    "modifiers" : [ ]
   }, {
     "name" : "searchParameters",
-    "type" : "com.axonivy.connector.skribble.signaturerequest.SignatureRequestSearchParameters",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "com.axonivy.connector.skribble.signaturerequest.SignatureRequestSearchParameters"
   }, {
     "name" : "statusResponse",
-    "type" : "com.axonivy.connector.skribble.util.StatusResponse",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "com.axonivy.connector.skribble.util.StatusResponse"
   } ]
 }

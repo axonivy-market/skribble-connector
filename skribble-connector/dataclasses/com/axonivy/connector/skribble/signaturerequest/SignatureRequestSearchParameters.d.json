@@ -1,57 +1,37 @@
 {
-  "$schema" : "https://json-schema.axonivy.com/data-class/12.0.0/data-class.json",
+  "$schema" : "https://json-schema.axonivy.com/14.0-dev/project/data-class.json",
   "simpleName" : "SignatureRequestSearchParameters",
   "namespace" : "com.axonivy.connector.skribble.signaturerequest",
-  "isBusinessCaseData" : false,
   "fields" : [ {
-    "name" : "id",
-    "type" : "String",
-    "modifiers" : [ "PERSISTENT" ]
+    "name" : "id"
   }, {
-    "name" : "version",
-    "type" : "String",
-    "modifiers" : [ "PERSISTENT" ]
+    "name" : "version"
   }, {
     "name" : "account_email",
-    "type" : "String",
-    "comment" : "Filter on the field signatures.account_email",
-    "modifiers" : [ "PERSISTENT" ]
+    "comment" : "Filter on the field signatures.account_email"
   }, {
-    "name" : "created_by",
-    "type" : "String",
-    "modifiers" : [ "PERSISTENT" ]
+    "name" : "created_by"
   }, {
     "name" : "page_number",
     "type" : "Integer",
-    "comment" : "Page number must be greater than or equal to 0",
-    "modifiers" : [ "PERSISTENT" ]
+    "comment" : "Page number must be greater than or equal to 0"
   }, {
     "name" : "page_size",
     "type" : "Integer",
-    "comment" : "Page size must be greater than or equal to 0",
-    "modifiers" : [ "PERSISTENT" ]
+    "comment" : "Page size must be greater than or equal to 0"
   }, {
     "name" : "search",
-    "type" : "String",
-    "comment" : "Filter on the field title to search for documents containing the search term.",
-    "modifiers" : [ "PERSISTENT" ]
+    "comment" : "Filter on the field title to search for documents containing the search term."
   }, {
     "name" : "signature_status",
-    "type" : "String",
-    "comment" : "Filter on the field signatures.status_code with one of the valid Signature states",
-    "modifiers" : [ "PERSISTENT" ]
+    "comment" : "Filter on the field signatures.status_code with one of the valid Signature states"
   }, {
     "name" : "signatures_count",
-    "type" : "Integer",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "Integer"
   }, {
-    "name" : "signer_email_address",
-    "type" : "String",
-    "modifiers" : [ "PERSISTENT" ]
+    "name" : "signer_email_address"
   }, {
     "name" : "status_overall",
-    "type" : "String",
-    "comment" : "Filter on the field status_overall with one of the valid Signature states",
-    "modifiers" : [ "PERSISTENT" ]
+    "comment" : "Filter on the field status_overall with one of the valid Signature states"
   } ]
 }

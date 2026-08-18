@@ -1,5 +1,5 @@
 {
-  "$schema" : "https://json-schema.axonivy.com/process/13.2.0/process.json",
+  "$schema" : "https://json-schema.axonivy.com/14.0-dev/project/process.json",
   "id" : "1916B6CA7C4F939C",
   "kind" : "CALLABLE_SUB",
   "config" : {
@@ -52,7 +52,7 @@
       ],
       "config" : {
         "target" : {
-          "clientId" : "6c92d3d7-cb33-4cfa-964a-8242ad165742",
+          "clientId" : "Skribble",
           "path" : "v2/documents/{id}",
           "templateParams" : {
             "id" : "in.document.id"
@@ -139,7 +139,7 @@
       ],
       "config" : {
         "target" : {
-          "clientId" : "6c92d3d7-cb33-4cfa-964a-8242ad165742",
+          "clientId" : "Skribble",
           "path" : "v2/documents/{id}/content",
           "templateParams" : {
             "id" : "in.document.id"
@@ -225,7 +225,7 @@
       ],
       "config" : {
         "target" : {
-          "clientId" : "6c92d3d7-cb33-4cfa-964a-8242ad165742",
+          "clientId" : "Skribble",
           "path" : "v2/documents/{id}/content",
           "templateParams" : {
             "id" : "in.document.id"
