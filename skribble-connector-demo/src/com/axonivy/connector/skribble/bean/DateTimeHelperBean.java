@@ -1,15 +1,16 @@
 package com.axonivy.connector.skribble.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import jakarta.inject.Named;
+import jakarta.faces.view.ViewScoped;
 
 import ch.ivyteam.ivy.environment.Ivy;
 
 @ViewScoped
-@ManagedBean
-public class DateTimeHelperBean {
+@Named
+public class DateTimeHelperBean implements Serializable {
   public static Date getJavaDate(String instantStr) {
     Date date = null;
     try {

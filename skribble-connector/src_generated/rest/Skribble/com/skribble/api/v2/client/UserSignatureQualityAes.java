@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 /**
  * Closest match to AES
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2024-08-26T13:56:34.812195500+02:00[Europe/Zurich]")
+@jakarta.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2024-08-26T13:56:34.812195500+02:00[Europe/Zurich]")
 public class UserSignatureQualityAes {
   @JsonProperty("any")
   private String any = null;

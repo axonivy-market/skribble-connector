@@ -1,5 +1,5 @@
 {
-  "$schema" : "https://json-schema.axonivy.com/14.0-dev/project/process.json",
+  "$schema" : "https://json-schema.axonivy.com/14.0-dev/project/process-2.json",
   "id" : "1916B6CA7C4F939C",
   "kind" : "CALLABLE_SUB",
   "config" : {
@@ -167,7 +167,7 @@
         },
         "response" : {
           "entity" : {
-            "type" : "com.fasterxml.jackson.databind.JsonNode",
+            "type" : "tools.jackson.databind.JsonNode",
             "code" : "out.content = result.get(\"content\").asText();"
           }
         }
@@ -253,7 +253,7 @@
         },
         "response" : {
           "entity" : {
-            "type" : "com.fasterxml.jackson.databind.JsonNode",
+            "type" : "tools.jackson.databind.JsonNode",
             "code" : "out.content = result.get(\"content\").asText();"
           }
         }
