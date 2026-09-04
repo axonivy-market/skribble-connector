@@ -25,7 +25,7 @@ import java.util.List;
 /**
  * Defines the appearance of a signature in a document. If no appearance is defined, the signature will be invisible, which is a valid option.
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2024-08-26T13:56:34.812195500+02:00[Europe/Zurich]")
+@jakarta.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2024-08-26T13:56:34.812195500+02:00[Europe/Zurich]")
 public class VisualSignature {
   @JsonProperty("form_field")
   private String formField = null;
