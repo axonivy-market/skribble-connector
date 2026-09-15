@@ -16,7 +16,7 @@ import com.skribble.api.v2.client.AccessLoginBody;
 
 import ch.ivyteam.ivy.application.IApplication;
 import ch.ivyteam.ivy.environment.Ivy;
-import ch.ivyteam.ivy.rest.client.FeatureConfig;
+import ch.ivyteam.ivy.rest.client.feature.FeatureConfig;
 
 public class SkribbleAuthFeature implements Feature {
 
@@ -57,7 +57,7 @@ public class SkribbleAuthFeature implements Feature {
 
     private String login(ClientRequestContext ctxt) {
 
-      var config = new FeatureConfig(ctxt.getConfiguration(), SkribbleAuthFeature.class);
+      var config = FeatureConfig.of(ctxt.getConfiguration(), SkribbleAuthFeature.class);
       String key = config.readMandatory("AUTH.key");
 
       var login = new AccessLoginBody();
