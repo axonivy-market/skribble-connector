@@ -1,0 +1,22 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/14.0/project/data-class.json",
+  "simpleName" : "SignRequestData",
+  "namespace" : "com.axonivy.connector.skribble.demo.SignRequest",
+  "fields" : [ {
+    "name" : "csr",
+    "type" : "com.skribble.api.v2.client.CreateSignatureRequest",
+    "modifiers" : [ ]
+  }, {
+    "name" : "fileUploadEvent",
+    "type" : "org.primefaces.event.FileUploadEvent",
+    "modifiers" : [ ]
+  }, {
+    "name" : "success",
+    "type" : "Boolean",
+    "modifiers" : [ ]
+  }, {
+    "name" : "file",
+    "type" : "File",
+    "modifiers" : [ ]
+  } ]
+}

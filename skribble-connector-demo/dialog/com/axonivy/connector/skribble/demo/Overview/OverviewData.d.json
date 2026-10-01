@@ -1,0 +1,25 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/14.0/project/data-class.json",
+  "simpleName" : "OverviewData",
+  "namespace" : "com.axonivy.connector.skribble.demo.Overview",
+  "fields" : [ {
+    "name" : "signatureRequests",
+    "type" : "List<com.skribble.api.v2.client.SignatureRequest>",
+    "modifiers" : [ ]
+  }, {
+    "name" : "selectedSignatureRequest",
+    "type" : "com.skribble.api.v2.client.SignatureRequest",
+    "modifiers" : [ ]
+  }, {
+    "name" : "file",
+    "type" : "File",
+    "modifiers" : [ ]
+  }, {
+    "name" : "document",
+    "type" : "com.skribble.api.v2.client.Document",
+    "modifiers" : [ ]
+  }, {
+    "name" : "nextView",
+    "modifiers" : [ ]
+  } ]
+}

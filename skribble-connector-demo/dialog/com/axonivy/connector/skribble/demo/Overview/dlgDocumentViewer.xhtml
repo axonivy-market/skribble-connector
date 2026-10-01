@@ -1,0 +1,20 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="jakarta.faces.core"
+	xmlns:h="jakarta.faces.html"
+	xmlns:ui="jakarta.faces.facelets"
+	xmlns:ic="http://ivyteam.ch/jsf/component"
+	xmlns:p="primefaces"
+	xmlns:pe="primefaces.extensions">
+<body>
+	<ui:composition>
+		<p:dialog header="" widgetVar="dlgDocumentViewer" modal="true"
+			position="center center" width="80%" height="60%">
+
+			<pe:documentViewer height="800" zoom="90"
+				url="#{ivy.html.fileref(data.file)}" >
+			</pe:documentViewer>
+
+		</p:dialog>
+	</ui:composition>
+</body>
+</html>

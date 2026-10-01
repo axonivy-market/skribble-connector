@@ -26,7 +26,7 @@ import com.skribble.api.v2.client.UserSignatureQualitySes;
  * UserSignatureQualities
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2024-08-26T13:56:34.812195500+02:00[Europe/Zurich]")
+@jakarta.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2024-08-26T13:56:34.812195500+02:00[Europe/Zurich]")
 public class UserSignatureQualities {
   @JsonProperty("qes")
   private UserSignatureQualityQes qes = null;

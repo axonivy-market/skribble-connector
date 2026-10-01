@@ -1,0 +1,17 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/14.0/project/data-class.json",
+  "simpleName" : "DocumentsData",
+  "namespace" : "com.axonivy.connector.skribble.documents",
+  "fields" : [ {
+    "name" : "document",
+    "type" : "com.skribble.api.v2.client.Document",
+    "modifiers" : [ ]
+  }, {
+    "name" : "content",
+    "modifiers" : [ ]
+  }, {
+    "name" : "file",
+    "type" : "File",
+    "modifiers" : [ ]
+  } ]
+}
