@@ -3,18 +3,18 @@ package com.axonivy.connector.skribble;
 import java.io.IOException;
 import java.time.Instant;
 
-import javax.ws.rs.Priorities;
-import javax.ws.rs.client.ClientRequestContext;
-import javax.ws.rs.client.ClientRequestFilter;
-import javax.ws.rs.client.Entity;
-import javax.ws.rs.core.Feature;
-import javax.ws.rs.core.FeatureContext;
-import javax.ws.rs.core.MediaType;
+import jakarta.ws.rs.Priorities;
+import jakarta.ws.rs.client.ClientRequestContext;
+import jakarta.ws.rs.client.ClientRequestFilter;
+import jakarta.ws.rs.client.Entity;
+import jakarta.ws.rs.core.Feature;
+import jakarta.ws.rs.core.FeatureContext;
+import jakarta.ws.rs.core.MediaType;
 
 import com.auth0.jwt.JWT;
 import com.skribble.api.v2.client.AccessLoginBody;
 
-import ch.ivyteam.ivy.application.IApplication;
+import ch.ivyteam.ivy.application.app.Application;
 import ch.ivyteam.ivy.environment.Ivy;
 import ch.ivyteam.ivy.rest.client.FeatureConfig;
 
@@ -38,7 +38,7 @@ public class SkribbleAuthFeature implements Feature {
         return;
       }
 
-      var sessionToken = (String) IApplication.current().getAttribute(SKRIBBLE_AUTH_SESSION_TOKEN);
+      var sessionToken = (String) Application.current().getAttribute(SKRIBBLE_AUTH_SESSION_TOKEN);
 
       if (sessionToken != null) {
         var decoded = new JWT().decodeJwt(sessionToken);
@@ -50,7 +50,7 @@ public class SkribbleAuthFeature implements Feature {
 
       if (sessionToken == null) {
         sessionToken = login(ctxt);
-        IApplication.current().setAttribute(SKRIBBLE_AUTH_SESSION_TOKEN, sessionToken);
+        Application.current().setAttribute(SKRIBBLE_AUTH_SESSION_TOKEN, sessionToken);
       }
       ctxt.getHeaders().putSingle("Authorization", "Bearer " + sessionToken);
     }

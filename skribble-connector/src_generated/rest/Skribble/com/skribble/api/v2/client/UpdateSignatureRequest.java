@@ -24,7 +24,7 @@ import java.util.List;
 /**
  * Update an existing &#x60;SignatureRequest&#x60;. Send only the fields, which shall be updated.
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2024-08-26T13:56:34.812195500+02:00[Europe/Zurich]")
+@jakarta.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2024-08-26T13:56:34.812195500+02:00[Europe/Zurich]")
 public class UpdateSignatureRequest {
   @JsonProperty("id")
   private String id = null;
