@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   build:
-    uses: axonivy-market/github-workflows/.github/workflows/ci.yml@v6
+    uses: axonivy-market/github-workflows/.github/workflows/ci.yml@v14
     secrets:
       mvnArgs: -Dskribble.username=${{secrets.USERNAME}} -Dskribble.authKey=${{secrets.AUTHKEY}} -DtestEnvironment=E2E
 
